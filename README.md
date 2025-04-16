@@ -1,3 +1,4 @@
+
 # 📝 Journal Management System
 
 A secure **Journal Management System** built with Spring Boot that allows users to create and manage private journal entries with secure authentication.
@@ -38,29 +39,36 @@ A secure **Journal Management System** built with Spring Boot that allows users 
 ## 🚀 Setup Instructions
 
 ### 1. Clone the Repository
-``` bash
-git clone https://github.com/yourusername/journal-management.git
-2. Navigate to Project Directory
-bash
-Copy
-Edit
-cd journal-management
-3. Install Dependencies
-bash
-Copy
-Edit
-mvn clean install
-4. Run the Application
-bash
-Copy
-Edit
-mvn spring-boot:run
-🔗 Visit: http://localhost:8080
 
-📁 Project Structure
-swift
-Copy
-Edit
+```bash
+git clone https://github.com/yourusername/journal-management.git
+```
+
+### 2. Navigate to Project Directory
+
+```bash
+cd journal-management
+```
+
+### 3. Install Dependencies
+
+```bash
+mvn clean install
+```
+
+### 4. Run the Application
+
+```bash
+mvn spring-boot:run
+```
+
+🔗 Visit: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## 📁 Project Structure
+
+```
 journal-management/
 │
 ├── src/
@@ -82,28 +90,33 @@ journal-management/
 │           ├── application.properties
 │           └── static/
 ├── pom.xml
-📡 API Endpoints
-🔑 POST /login
+```
+
+---
+
+## 📡 API Endpoints
+
+### 🔑 `POST /login`
+
 Authenticates users using Basic Auth.
 
-Request Body:
-
-json
-Copy
-Edit
+**Request Body**:
+```json
 {
   "username": "your_username",
   "password": "your_password"
 }
-📖 GET /journal/entries
+```
+
+---
+
+### 📖 `GET /journal/entries`
+
 Retrieves all journal entries of the authenticated user.
 
-Authorization: Basic Auth
-Response:
-
-json
-Copy
-Edit
+**Authorization**: Basic Auth  
+**Response**:
+```json
 [
   {
     "id": 1,
@@ -112,95 +125,97 @@ Edit
     "content": "This is my first journal entry"
   }
 ]
-📝 POST /journal/entries
+```
+
+---
+
+### 📝 `POST /journal/entries`
+
 Creates a new journal entry.
 
-Authorization: Basic Auth
-Request Body:
-
-json
-Copy
-Edit
+**Authorization**: Basic Auth  
+**Request Body**:
+```json
 {
   "title": "My new journal entry",
   "content": "This is the content of the journal entry"
 }
-Response:
+```
 
-json
-Copy
-Edit
+**Response**:
+```json
 {
   "id": 2,
   "date": "2025-04-02",
   "title": "My new journal entry",
   "content": "This is the content of the journal entry"
 }
-🛠️ Database Configuration
-Default (H2 In-Memory)
-No setup needed. Accessible at:
-http://localhost:8080/h2-console
+```
 
-Switch to MySQL (Example)
-Update application.properties:
+---
 
-properties
-Copy
-Edit
+## 🛠️ Database Configuration
+
+### Default (H2 In-Memory)
+
+No setup needed. Accessible at:  
+[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
+### Switch to MySQL (Example)
+
+Update `application.properties`:
+
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/journal_db
 spring.datasource.username=root
 spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-🔐 Security Considerations
-Basic Auth: Used for simplicity. For production, consider using JWT or OAuth2.
-
-Password Hashing: All user passwords are hashed with BCrypt.
-
-🤝 Contribution
-Fork the repository
-
-Create a new branch:
-
-bash
-Copy
-Edit
-git checkout -b feature-branch
-Commit your changes:
-
-bash
-Copy
-Edit
-git commit -am 'Add new feature'
-Push to GitHub:
-
-bash
-Copy
-Edit
-git push origin feature-branch
-Create a Pull Request
-
-📜 License
-This project is licensed under the MIT License.
-See the LICENSE file for details.
-
-🙌 Acknowledgements
-Spring Boot
-
-Spring Security
-
-BCrypt
-
-Lombok
-
-H2 Database
-
-Built with ❤️ by Aditya Kumar
-
-yaml
-Copy
-Edit
+```
 
 ---
 
-Let me know if you'd like to add GitHub badges, API documentation with Swagger, or a UI component (e.g., using Thymeleaf or React).
+## 🔐 Security Considerations
+
+- **Basic Auth**: Used for simplicity. For production, consider using **JWT** or **OAuth2**.
+- **Password Hashing**: All user passwords are hashed with **BCrypt**.
+
+---
+
+## 🤝 Contribution
+
+1. Fork the repository
+2. Create a new branch:  
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Commit your changes:  
+   ```bash
+   git commit -am 'Add new feature'
+   ```
+4. Push to GitHub:  
+   ```bash
+   git push origin feature-branch
+   ```
+5. Create a **Pull Request**
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙌 Acknowledgements
+
+- **Spring Boot**
+- **Spring Security**
+- **BCrypt**
+- **Lombok**
+- **H2 Database**
+
+---
+
+> Built with ❤️ by Aditya Kumar
