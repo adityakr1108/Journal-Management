@@ -1,143 +1,129 @@
-# Journal Management System
+# 📝 Journal Management System
 
-This is a **Journal Management System** that allows users to maintain a private journal. Users can securely authenticate, create, and manage journal entries.
-
----
-
-## Features
-
-- **Secure Authentication**: Users can log in to the system with username and password using Basic Authentication.
-- **Private Journal**: Access to journal entries is restricted to authenticated users.
-- **Stateless Authentication**: The system does not store sessions, making it suitable for stateless applications.
-- **Password Encryption**: All user passwords are securely stored using BCrypt encryption.
-- **Custom Authentication**: Uses a custom UserDetailsService to load users and roles from the database.
+A secure **Journal Management System** built with Spring Boot that allows users to create and manage private journal entries with secure authentication.
 
 ---
 
-## Technologies Used
+## 🔐 Features
 
-- **Spring Boot**: For creating the backend application.
-- **Spring Security**: For managing authentication and authorization.
-- **Spring Data JPA**: To interact with the database.
-- **BCrypt Password Encoder**: For securing user passwords.
-- **H2 Database (Optional)**: A simple in-memory database for development (can be replaced with any database like MySQL or PostgreSQL).
-- **Lombok**: To reduce boilerplate code.
-- **REST API**: Exposes secure endpoints for accessing journal entries.
+- ✅ **Secure Authentication** using Basic Auth
+- 🔒 **Private Journal** access restricted to authenticated users
+- 📦 **Stateless Authentication** – no sessions, ideal for REST APIs
+- 🔐 **Password Encryption** using BCrypt
+- 🧠 **Custom UserDetailsService** for loading users/roles from the database
+- 🌐 **REST API** for journal entry management
 
 ---
 
-## Requirements
+## ⚙️ Technologies Used
+
+- **Spring Boot** – Backend application framework
+- **Spring Security** – Authentication and Authorization
+- **Spring Data JPA** – ORM for database interactions
+- **BCrypt** – Password hashing
+- **H2 Database** – In-memory DB for development *(can be replaced with MySQL/PostgreSQL)*
+- **Lombok** – Boilerplate code reduction
+
+---
+
+## 🧰 Requirements
 
 - **Java 17** or above
-- **Maven** (for building and managing dependencies)
+- **Maven**
 - **Spring Boot 2.x** or later
-- **IDE** (e.g., IntelliJ IDEA, Eclipse)
+- **IDE** like IntelliJ IDEA or Eclipse
 
 ---
 
-## Setup
+## 🚀 Setup Instructions
 
-### Clone the Repository
-```bash
+### 1. Clone the Repository
+
 git clone https://github.com/yourusername/journal-management.git
-  Set up the project
-Navigate to the project directory:
-
+2. Navigate to Project Directory
 bash
 Copy
 Edit
 cd journal-management
-Install dependencies using Maven:
-
+3. Install Dependencies
 bash
 Copy
 Edit
 mvn clean install
-Run the application:
-
+4. Run the Application
 bash
 Copy
 Edit
 mvn spring-boot:run
-By default, the application will run on http://localhost:8080.
+🔗 Visit: http://localhost:8080
 
-Folder Structure
-arduino
+📁 Project Structure
+swift
 Copy
 Edit
 journal-management/
 │
 ├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── edigest/
-│   │   │   │   │   ├── journal/
-│   │   │   │   │   │   ├── app/
-│   │   │   │   │   │   │   ├── config/
-│   │   │   │   │   │   │   │   ├── SpringSecurity.java
-│   │   │   │   │   │   │   ├── service/
-│   │   │   │   │   │   │   │   ├── UserDetailsServiceImpl.java
-│   │   │   │   │   │   │   ├── entity/
-│   │   │   │   │   │   │   │   ├── UserEntry.java
-│   │   │   │   │   │   │   ├── repository/
-│   │   │   │   │   │   │   │   ├── UserRepository.java
-│   │   │   │   │   │   │   ├── controller/
-│   │   │   │   │   │   │   │   ├── JournalController.java
-│   │   │   │   │   │   │   ├── JournalApplication.java
-│   │   │   ├── resources/
-│   │   │   │   ├── application.properties
-│   │   │   │   └── static/
-│   │   │   └── pom.xml
-Endpoints
-1. POST /login
-Authentication Endpoint
-Used for authenticating users with username and password.
+│   └── main/
+│       ├── java/com/edigest/journal/
+│       │   ├── app/
+│       │   │   ├── config/
+│       │   │   │   └── SpringSecurity.java
+│       │   │   ├── controller/
+│       │   │   │   └── JournalController.java
+│       │   │   ├── entity/
+│       │   │   │   └── UserEntry.java
+│       │   │   ├── repository/
+│       │   │   │   └── UserRepository.java
+│       │   │   ├── service/
+│       │   │   │   └── UserDetailsServiceImpl.java
+│       │   │   └── JournalApplication.java
+│       └── resources/
+│           ├── application.properties
+│           └── static/
+├── pom.xml
+📡 API Endpoints
+🔑 POST /login
+Authenticates users using Basic Auth.
 
-Request body:
+Request Body:
 
 json
 Copy
 Edit
 {
-    "username": "your_username",
-    "password": "your_password"
+  "username": "your_username",
+  "password": "your_password"
 }
-Response: A token or successful login response.
+📖 GET /journal/entries
+Retrieves all journal entries of the authenticated user.
 
-2. GET /journal/entries
-Retrieve Journal Entries
-This endpoint is accessible only to authenticated users.
-
-Authorization: Basic Auth (provide username and password).
-
+Authorization: Basic Auth
 Response:
 
 json
 Copy
 Edit
 [
-    {
-        "id": 1,
-        "date": "2025-04-01",
-        "title": "My first journal",
-        "content": "This is my first journal entry"
-    }
+  {
+    "id": 1,
+    "date": "2025-04-01",
+    "title": "My first journal",
+    "content": "This is my first journal entry"
+  }
 ]
-3. POST /journal/entries
-Create a new journal entry
-This endpoint allows users to create new journal entries.
+📝 POST /journal/entries
+Creates a new journal entry.
 
-Authorization: Basic Auth (provide username and password).
-
-Request body:
+Authorization: Basic Auth
+Request Body:
 
 json
 Copy
 Edit
 {
-    "title": "My new journal entry",
-    "content": "This is the content of the journal entry"
+  "title": "My new journal entry",
+  "content": "This is the content of the journal entry"
 }
 Response:
 
@@ -145,15 +131,18 @@ json
 Copy
 Edit
 {
-    "id": 2,
-    "date": "2025-04-02",
-    "title": "My new journal entry",
-    "content": "This is the content of the journal entry"
+  "id": 2,
+  "date": "2025-04-02",
+  "title": "My new journal entry",
+  "content": "This is the content of the journal entry"
 }
-Database Configuration
-This application uses an in-memory H2 database for development purposes. You can configure your own database (e.g., MySQL, PostgreSQL) by updating the application.properties file.
+🛠️ Database Configuration
+Default (H2 In-Memory)
+No setup needed. Accessible at:
+http://localhost:8080/h2-console
 
-Example for MySQL:
+Switch to MySQL (Example)
+Update application.properties:
 
 properties
 Copy
@@ -163,34 +152,55 @@ spring.datasource.username=root
 spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-Security Considerations
-Basic Authentication: The application uses basic authentication for simplicity. For production, consider switching to JWT-based authentication or OAuth2.
+🔐 Security Considerations
+Basic Auth: Used for simplicity. For production, consider using JWT or OAuth2.
 
-Password Security: Passwords are stored securely with BCrypt hashing.
+Password Hashing: All user passwords are hashed with BCrypt.
 
-Contribution
-Fork the repository.
+🤝 Contribution
+Fork the repository
 
-Create a new branch (git checkout -b feature-branch).
+Create a new branch:
 
-Make your changes.
-
-Commit your changes (git commit -am 'Add new feature').
-
-Push to the branch (git push origin feature-branch).
-
-Create a new pull request.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Acknowledgements
-Spring Boot: For rapid application development.
-
-Spring Security: For authentication and authorization.
-
-BCrypt: For password hashing.
-
-pgsql
+bash
 Copy
 Edit
+git checkout -b feature-branch
+Commit your changes:
+
+bash
+Copy
+Edit
+git commit -am 'Add new feature'
+Push to GitHub:
+
+bash
+Copy
+Edit
+git push origin feature-branch
+Create a Pull Request
+
+📜 License
+This project is licensed under the MIT License.
+See the LICENSE file for details.
+
+🙌 Acknowledgements
+Spring Boot
+
+Spring Security
+
+BCrypt
+
+Lombok
+
+H2 Database
+
+Built with ❤️ by Aditya Kumar
+
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you'd like to add GitHub badges, API documentation with Swagger, or a UI component (e.g., using Thymeleaf or React).
