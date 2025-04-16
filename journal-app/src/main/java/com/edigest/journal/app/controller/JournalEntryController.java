@@ -46,7 +46,7 @@ public class JournalEntryController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    
     @GetMapping("id/{myId}") // here we are request the id  // localhost:8080/journal/id/{myId} GET
     public ResponseEntity<JournalEntry> getById(@PathVariable ObjectId myId) { // we are using pathvaribale so that it takes up the argument from the getMapping and transfer it as a argument to map.get;
 

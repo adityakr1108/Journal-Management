@@ -1,4 +1,4 @@
-package com.edigest.journal.app.repositery;
+package com.edigest.journal.app.repository;
 
 import com.edigest.journal.app.entity.userEntry;
 import org.bson.types.ObjectId;

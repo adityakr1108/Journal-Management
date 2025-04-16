@@ -2,7 +2,7 @@ package com.edigest.journal.app.service;
 
 import com.edigest.journal.app.entity.JournalEntry;
 import com.edigest.journal.app.entity.userEntry;
-import com.edigest.journal.app.repositery.journalEntryRepository;
+import com.edigest.journal.app.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,18 +16,26 @@ import java.util.Optional;
 public class journalEntryService {
 
     @Autowired
-    private journalEntryRepository repository;
+    private JournalEntryRepository repository;
 
     @Autowired
     private userService userService;
 
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName){
-        userEntry user = userService.findByUserName(userName);
-        journalEntry.setDate(LocalDateTime.now());
-       JournalEntry save =  repository.save(journalEntry);
-       user.getJournalEntries().add(save);
-       userService.saveEntry(user);
+        try{
+            userEntry user = userService.findByUserName(userName);
+            journalEntry.setDate(LocalDateTime.now());
+            JournalEntry save =  repository.save(journalEntry);
+            user.getJournalEntries().add(save);
+//            user.setUserName(null);
+            userService.saveEntry(user);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new RuntimeException("An error has been occured " , e);
+        }
+
     }
     public void saveEntry(JournalEntry journalEntry){
         repository.save(journalEntry);
